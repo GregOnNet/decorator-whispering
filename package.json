@@ -1,0 +1,11 @@
+{
+  "name": "decorator-instrumentation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Gregor Woiwode <gregor.woiwode@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "ts-morph": "^8.1.1",
+    "typescript": "^4.0.3"
+  }
+}
