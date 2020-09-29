@@ -257,7 +257,7 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-ts-morph@^8.1.1:
+ts-morph@8.1.1:
   version "8.1.1"
   resolved "https://registry.yarnpkg.com/ts-morph/-/ts-morph-8.1.1.tgz#26698328116434737c2ed7bd473a5f07274b08c0"
   integrity sha512-tjtRAzY4A3huKVlEnTJveLfvNmRICMOhvRJY6kwJ3Oo7bkshJa0zBdsmb/ciIWIn6L/eJsihHjoeqvNJCBbzUA==
@@ -266,7 +266,7 @@ ts-morph@^8.1.1:
     "@ts-morph/common" "~0.6.0"
     code-block-writer "^10.1.0"
 
-typescript@^4.0.3, typescript@~4.0.2:
+typescript@4.0.3, typescript@~4.0.2:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.0.3.tgz#153bbd468ef07725c1df9c77e8b453f8d36abba5"
   integrity sha512-tEu6DGxGgRJPb/mVPIZ48e69xCn2yRmCgYmDugAVwmJ6o+0u1RI18eO7E7WBTLYLaEVVOhwQmcdhQHweux/WPg==

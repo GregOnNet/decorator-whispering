@@ -7,6 +7,7 @@
 // read oss-url from @Rule decorator
 // - read oss file
 // - add property "oss" inlining the content of oss file
+import { ClassDeclaration, Project } from 'ts-morph';
 
 const project = new Project();
 const sourceFile = project.createSourceFile(
@@ -24,3 +25,12 @@ const sourceFile = project.createSourceFile(
     }
   `
 );
+
+const classesInFile = sourceFile.getClasses();
+const ruleClasses = classesInFile.filter(clazz => isRule(clazz));
+
+function isRule(clazz: ClassDeclaration) {
+  return clazz
+    .getDecorators()
+    .some(decorator => decorator.getFullName() === 'Rule');
+}
