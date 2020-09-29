@@ -1,3 +1,5 @@
+import { ClassDeclaration, Project } from 'ts-morph';
+
 // reference: ts-morph API: https://ts-morph.com/details/index
 // process entity.ts
 // read class name
@@ -7,7 +9,6 @@
 // read oss-url from @Rule decorator
 // - read oss file
 // - add property "oss" inlining the content of oss file
-import { ClassDeclaration, Project } from 'ts-morph';
 
 const project = new Project();
 const sourceFile = project.createSourceFile(
