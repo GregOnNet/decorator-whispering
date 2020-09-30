@@ -30,6 +30,16 @@ const sourceFile = project.createSourceFile(
 const classesInFile = sourceFile.getClasses();
 const ruleClasses = classesInFile.filter(clazz => isRule(clazz));
 
+ruleClasses.forEach(clazz => {
+  const ruleDecorator = clazz.getDecorator('Rule');
+
+  if (!ruleDecorator) return;
+
+  console.log(ruleDecorator.getArguments()[0].print());
+  ruleDecorator.insertArguments(1, ['string']);
+  ruleDecorator.getArguments().forEach(arg => console.log(arg.print()));
+});
+
 function isRule(clazz: ClassDeclaration) {
   return clazz
     .getDecorators()
