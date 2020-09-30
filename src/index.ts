@@ -29,37 +29,15 @@ const sourceFile = project.createSourceFile(
   `
 );
 
+console.log('BEFORE');
+console.log('-----');
+console.log(sourceFile.getText());
+
 const classesInFile = sourceFile.getClasses();
 const ruleClasses = classesInFile.filter(clazz => isRule(clazz));
 
 ruleClasses.forEach(clazz => {
   const ruleDecorator = clazz.getDecorator('Rule');
-
-  const properties = clazz
-    .getProperties()
-    .map(prop => {
-      // if (prop.getType().isInterface()) {
-      //   throw new Error(
-      //     `Sorry, interfaces (${prop
-      //       .getType()
-      //       .getText()}) are not supported. Please use a class instead.`
-      //   );
-      // }
-      if (!prop.getType().isClass()) {
-        return {
-          name: prop.getName(),
-          type: capitalize(prop.getType().getText())
-        };
-      } else {
-        return { name: prop.getName(), type: prop.getType().getText() };
-      }
-    })
-    .reduce(
-      (dictionary, prop) => ({ ...dictionary, [prop.name]: prop.type }),
-      {}
-    );
-
-  console.log(properties);
 
   if (!ruleDecorator) return;
 
@@ -76,12 +54,33 @@ ruleClasses.forEach(clazz => {
     ruleSettings.addProperty({
       kind: StructureKind.PropertyAssignment,
       name: 'types',
-      initializer: JSON.stringify(properties)
+      initializer: JSON.stringify(getPropertiesFromClass(clazz))
     });
   }
 });
 
+console.log('AFTER');
+console.log('-----');
 console.log(sourceFile.getText());
+
+function getPropertiesFromClass(clazz: ClassDeclaration) {
+  return clazz
+    .getProperties()
+    .map(prop => {
+      if (!prop.getType().isClass()) {
+        return {
+          name: prop.getName(),
+          type: capitalize(prop.getType().getText())
+        };
+      } else {
+        return { name: prop.getName(), type: prop.getType().getText() };
+      }
+    })
+    .reduce(
+      (dictionary, prop) => ({ ...dictionary, [prop.name]: prop.type }),
+      {}
+    );
+}
 
 function isRule(clazz: ClassDeclaration) {
   return clazz
