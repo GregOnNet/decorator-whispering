@@ -1,4 +1,4 @@
-## Decorator whispering
+## Decorator whispering - proof of concept
 
 Telling a decorator something about the class it is annotating.
 
