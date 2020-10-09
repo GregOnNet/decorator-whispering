@@ -1,0 +1,5 @@
+class=Entity {
+  property=aString {
+    label='A String';
+  }
+}
